@@ -134,7 +134,8 @@ def new_game():
 
 
 def isTransparent(x, y):
-
+    x = int(x)
+    y = int(y)
     try:
         if dungeon.map[x][y].block_sight and dungeon.map[x][y].blocked:
             return False
@@ -164,6 +165,8 @@ def render_all():
     player.fov_coords = map.quickFOV(player.x, player.y, isTransparent, 'basic')
 
     for x, y in player.fov_coords:
+        x = int(x)
+        y = int(y)
         if dungeon.map[x][y].blocked is not False:
             console.drawChar(x, y, '#', fgcolor=color_light_wall)
             dungeon.map[x][y].explored = True

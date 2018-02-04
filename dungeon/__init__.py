@@ -34,12 +34,18 @@ class Dungeon_Generator:
 
     def _create_h_tunnel(self, x1, x2, y):
         #horizontal tunnel. min() and max() are used in case x1>x2
+        x1 = int(x1)
+        x2 = int(x2)
+        y = int(y)
         for x in range(min(x1, x2), max(x1, x2) + 1):
             self.map[x][y].blocked = False
             self.map[x][y].block_sight = False
 
     def _create_v_tunnel(self, y1, y2, x):
         #vertical tunnel
+        y1 = int(y1)
+        y2 = int(y2)
+        x = int(x)
         for y in range(min(y1, y2), max(y1, y2) + 1):
             self.map[x][y].blocked = False
             self.map[x][y].block_sight = False
@@ -114,7 +120,7 @@ class Dungeon_Generator:
 
     def player_death(self, player):
         #the game ended!
-        print 'You died!'
+        print('You died!')
         self.player_state = 'dead'
 
         # for added effect, transform the player into a corpse!
@@ -127,7 +133,7 @@ class Dungeon_Generator:
     def monster_death(self, monster):
         #transform it into a nasty corpse! it doesn't block, can't be
         #attacked and doesn't move
-        print monster.name.capitalize() + ' is dead!'
+        print(monster.name.capitalize() + ' is dead!')
         monster.char = '%'
         monster.blocks = False
         monster.fighter = None

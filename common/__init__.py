@@ -97,6 +97,8 @@ def send_to_back(obj, objects):
 
 def is_blocked(x, y, dungeon):
     #first test the map tile
+    x = int(x)
+    y = int(y)
     if dungeon.map[x][y].blocked:
         return True
 
