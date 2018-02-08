@@ -1,5 +1,8 @@
 ## Game Description
-This is a Roguelike (dungeon crawler) game written in Python. 
+This is a Roguelike (dungeon crawler) game written in Python.
+This fork will run on:
+1. Python 3.6
+1. Python-tdl 4.3 https://github.com/HexDecimal/python-tdl
 
 ## Running the game
 This is uncompiled. In order to play you will need to clone this repo and run the Game.py (the entry script) from the command line.

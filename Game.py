@@ -160,7 +160,8 @@ def render_all():
             wall = dungeon.map[x][y].block_sight
             if dungeon.map[x][y].explored:
                 if wall:
-                    console.drawChar(x, y, '#', fgcolor=color_dark_gray_wall)
+                    fg = color_dark_gray_wall[0] << 16 | color_dark_gray_wall[1] << 8 | color_dark_gray_wall[2]
+                    console.drawChar(x, y, '#', fg)
 
     player.fov_coords = map.quickFOV(player.x, player.y, isTransparent, 'basic')
 
@@ -168,7 +169,8 @@ def render_all():
         x = int(x)
         y = int(y)
         if dungeon.map[x][y].blocked is not False:
-            console.drawChar(x, y, '#', fgcolor=color_light_wall)
+            fg = color_light_wall[0] << 16 | color_light_wall[1] << 8 | color_light_wall[2]
+            console.drawChar(x, y, '#', fg)
             dungeon.map[x][y].explored = True
 
     render_gui()
@@ -188,7 +190,9 @@ def play_game():
         for object in dungeon.objects:
             obj = object.get(player)
             if obj:
-                console.drawChar(obj.x, obj.y, obj.char)
+                x = int(obj.x)
+                y = int(obj.y)
+                console.drawChar(x, y, obj.char)
 
         if dungeon.player_state == 'dead':
             status_panel.drawStr(0, 4, 'You have died!')

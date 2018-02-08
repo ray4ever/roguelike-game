@@ -196,4 +196,4 @@ class Dungeon_Generator:
                 common.send_to_back(item, self.objects)
             else:
                 # if the spot was blocked find another spot to place the item
-                self.place_item(self, rooms)
+                self.place_item(rooms)
