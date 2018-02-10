@@ -33,18 +33,12 @@ class DungeonGenerator:
 
     def _create_h_tunnel(self, x1, x2, y):
         #horizontal tunnel. min() and max() are used in case x1>x2
-        x1 = int(x1)
-        x2 = int(x2)
-        y = int(y)
         for x in range(min(x1, x2), max(x1, x2) + 1):
             self.map[x][y].blocked = False
             self.map[x][y].block_sight = False
 
     def _create_v_tunnel(self, y1, y2, x):
         #vertical tunnel
-        y1 = int(y1)
-        y2 = int(y2)
-        x = int(x)
         for y in range(min(y1, y2), max(y1, y2) + 1):
             self.map[x][y].blocked = False
             self.map[x][y].block_sight = False

@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 """
-
+Rogue-like Game
 """
 
 import tdl
-
-from tdl import map
 from levelmanager import LevelManager
 
 SCREEN_WIDTH = 80
@@ -134,8 +132,6 @@ def new_game():
 
 
 def isTransparent(x, y):
-    x = int(x)
-    y = int(y)
     try:
         if dungeon.map[x][y].block_sight and dungeon.map[x][y].blocked:
             return False
@@ -161,16 +157,14 @@ def render_all():
             if dungeon.map[x][y].explored:
                 if wall:
                     fg = color_dark_gray_wall[0] << 16 | color_dark_gray_wall[1] << 8 | color_dark_gray_wall[2]
-                    console.drawChar(x, y, '#', fg)
+                    console.draw_char(x, y, '#', fg)
 
-    player.fov_coords = map.quickFOV(player.x, player.y, isTransparent, 'basic')
+    player.fov_coords = tdl.map.quick_fov(player.x, player.y, isTransparent, fov='basic')
 
     for x, y in player.fov_coords:
-        x = int(x)
-        y = int(y)
         if dungeon.map[x][y].blocked is not False:
             fg = color_light_wall[0] << 16 | color_light_wall[1] << 8 | color_light_wall[2]
-            console.drawChar(x, y, '#', fg)
+            console.draw_char(x, y, '#', fg)
             dungeon.map[x][y].explored = True
 
     render_gui()
@@ -190,9 +184,7 @@ def play_game():
         for object in dungeon.objects:
             obj = object.get(player)
             if obj:
-                x = int(obj.x)
-                y = int(obj.y)
-                console.drawChar(x, y, obj.char)
+                console.draw_char(obj.x, obj.y, obj.char)
 
         if dungeon.player_state == 'dead':
             status_panel.drawStr(0, 4, 'You have died!')

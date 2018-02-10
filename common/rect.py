@@ -7,8 +7,8 @@ class Rect:
         self.y2 = y + h
 
     def center(self):
-        center_x = (self.x1 + self.x2) / 2
-        center_y = (self.y1 + self.y2) / 2
+        center_x = (self.x1 + self.x2) // 2
+        center_y = (self.y1 + self.y2) // 2
         return (center_x, center_y)
 
     def intersect(self, other):
