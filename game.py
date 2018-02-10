@@ -52,7 +52,7 @@ MOVEMENT_KEYS = {
     'KP9': [1, -1],
     }
 
-tdl.setFont('terminal8x8_gs_ro.png')  # Configure the font.
+tdl.set_font('terminal8x8_gs_ro.png')  # Configure the font.
 
 
 # Create the root console.
@@ -76,7 +76,7 @@ def show_main_menu():
 
     tdl.flush()
 
-    key_event = tdl.event.keyWait()
+    key_event = tdl.event.key_wait()
 
     if key_event.keychar.upper() == 'A':
         new_game()
@@ -178,7 +178,7 @@ def render_all():
 
 def play_game():
 
-    tdl.setTitle('Level 1')
+    tdl.set_title('Level 1')
 
     while True:  # Continue in an infinite game loop.
 
